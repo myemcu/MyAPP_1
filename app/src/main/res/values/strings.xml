@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">MyAPP_1</string>
+    <string name="show">我爱钞票，我爱毛爷爷。</string>
+    <string name="btn1">观念赞同</string>
+    <string name="btn2">观念反对</string>
+    <string name="correct">是个正常人</string>
+    <string name="incorrect">不可理解</string>
+</resources>

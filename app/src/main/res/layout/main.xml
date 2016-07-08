@@ -1,0 +1,43 @@
+<!--  xmlns即根元素  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@mipmap/logo"
+    android:weightSum="1">
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/show"
+        android:textColor="#ffffff"
+        android:layout_gravity="center_horizontal"
+        android:textSize="14pt"
+        />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.08">
+
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btn1"
+            android:layout_weight="1"
+            android:textSize="8pt"
+            android:id="@+id/btn1" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btn2"
+            android:layout_weight="1"
+            android:textSize="8pt"
+            android:id="@+id/btn2" />
+    </LinearLayout>
+</LinearLayout>
