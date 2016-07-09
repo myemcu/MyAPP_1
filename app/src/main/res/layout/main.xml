@@ -11,18 +11,17 @@
         android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/show"
+        android:id="@+id/question_text_view"
         android:textColor="#ffffff"
         android:layout_gravity="center_horizontal"
+        android:text="@string/show"
         android:textSize="14pt"
         />
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.08">
-
+        android:layout_height="wrap_content">
 
         <Button
             android:layout_width="wrap_content"
@@ -40,4 +39,12 @@
             android:textSize="8pt"
             android:id="@+id/btn2" />
     </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/bNext"
+        android:textSize="8pt"
+        android:id="@+id/btn_next"
+        android:layout_gravity="center_horizontal" />
 </LinearLayout>

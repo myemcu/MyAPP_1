@@ -10,41 +10,46 @@ package com.example.administrator.myapp_1;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
+import android.widget.TextView;
 
 //              子类
 public class MainActivity extends AppCompatActivity {   // AppCompatActivity为旧版本提供兼容性支持
 
-    private Button btn1,btn2;   // 定义控件变量(xml中的)
+    //private Button btn1,btn2;     // 定义控件变量(xml中的)
+
+    //定义控件变量
+    private Button   mTrueButton;   // 正确键
+    private Button   mFalseButton;  // 错误键
+    private Button   mTextButton;   // 下翻建
+
+    private TextView mQuestionTextView; // 文本
+
+    // 定义普通变量
+    private int      question;
+
+    //定义问题数组
+    private Question[] mQuestionBank = new Question[] {
+            new Question(R.string.question_1,true),
+            new Question(R.string.question_2,false),
+            new Question(R.string.question_3,true),
+            new Question(R.string.question_4,false),
+            new Question(R.string.question_5,true)
+    };
+
+    //问题数组索引
+    private int mCurrentIndex=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-        // 获取控件对象
-        btn1=(Button) findViewById(R.id.btn1);
-        btn2=(Button) findViewById(R.id.btn2);
+        //取得数组资源ID
+        question=mQuestionBank[mCurrentIndex].getTextResId();
 
-        /*注册控件对象，使用匿名内层类实现响应*/
-
-        //为btn1注册监听，该监听器需实现View.OnClickListener接口
-        btn1.setOnClickListener(new View.OnClickListener(){
-           public void onClick(View v){
-               //按钮在此响应
-               //使用了匿名类,不能单写this,因为单this指代的是监听器View.OnClickListener而非活动
-               Toast.makeText(MainActivity.this, R.string.correct, Toast.LENGTH_SHORT).show();
-           }
-        });
-
-        //为btn2注册监听，该监听器需实现View.OnClickListener接口
-        btn2.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-                //按钮在此响应
-                Toast.makeText(MainActivity.this, R.string.incorrect, Toast.LENGTH_SHORT).show();
-            }
-        });
+        //获取文本，设置需要输出的问题
+        mQuestionTextView=(TextView) findViewById(R.id.question_text_view);
+        mQuestionTextView.setText(question);
     }
 }

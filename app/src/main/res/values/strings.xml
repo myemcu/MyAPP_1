@@ -1,8 +1,18 @@
 <resources>
     <string name="app_name">MyAPP_1</string>
-    <string name="show">我爱钞票，我爱毛爷爷。</string>
-    <string name="btn1">观念赞同</string>
-    <string name="btn2">观念反对</string>
-    <string name="correct">是个正常人</string>
-    <string name="incorrect">不可理解</string>
+    <string name="show">判断题测试。</string>
+    <string name="btn1">正确</string>
+    <string name="btn2">错误</string>
+    <string name="correct">正确，再来一次</string>
+    <string name="incorrect">不对，罚款500</string>
+
+    <string name="bNext">下一个</string>
+
+    <!--以下为题目描述-->
+
+    <string name = "question_1">老子写过《道德经》。</string>
+    <string name = "question_2">老子是外国人。</string>
+    <string name = "question_3">老子西出函谷关。</string>
+    <string name = "question_4">老子穿越回现代。</string>
+    <string name = "question_5">老子来过地球。</string>
 </resources>
