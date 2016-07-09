@@ -1,11 +1,11 @@
 <!--  xmlns即根元素  -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@mipmap/logo"
-    android:weightSum="1">
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:background="@mipmap/logo"
+              android:weightSum="1">
 
     <TextView
         android:layout_marginTop="10dp"
@@ -45,6 +45,6 @@
         android:layout_height="wrap_content"
         android:text="@string/bNext"
         android:textSize="8pt"
-        android:id="@+id/btn_next"
+        android:id="@+id/next"
         android:layout_gravity="center_horizontal" />
 </LinearLayout>
