@@ -16,6 +16,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,10 +27,11 @@ public class MainActivity extends AppCompatActivity {   // AppCompatActivity为�
     private Toast toast;
 
     //定义控件变量
-    private Button   mTrueButton;       // 正确键
-    private Button   mFalseButton;      // 错误键
-    private Button   mNextButton;       // 下翻建
-    private TextView mQuestionTextView; // 文本
+    private Button      mTrueButton;        // 正确键
+    private Button      mFalseButton;       // 错误键
+    private Button      mNextButton;        // 下翻建
+    private ImageButton mPrewButton;        // 上翻键
+    private TextView    mQuestionTextView;  // 文本
 
     // 定义普通变量
     private int      question;
@@ -79,6 +81,16 @@ public class MainActivity extends AppCompatActivity {   // AppCompatActivity为�
             }
         });
 
+        mPrewButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // if(mCurrentIndex<1) mCurrentIndex=5; (这行可用)
+                if(mCurrentIndex<1) mCurrentIndex=mQuestionBank.length;
+                mCurrentIndex = (mCurrentIndex-1) % mQuestionBank.length;//在length范围内递增索引
+
+                updateQuestion(); //显示问题
+            }
+        });
+
     }
     
     // 获取控件对象方法
@@ -88,6 +100,7 @@ public class MainActivity extends AppCompatActivity {   // AppCompatActivity为�
         mTrueButton  = (Button) findViewById(R.id.btn1);
         mFalseButton = (Button) findViewById(R.id.btn2);
         mNextButton  = (Button) findViewById(R.id.next);
+        mPrewButton  = (ImageButton) findViewById(R.id.imageButton);
     }
 
     // 更新显示题目方法

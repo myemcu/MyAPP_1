@@ -46,5 +46,16 @@
         android:text="@string/bNext"
         android:textSize="8pt"
         android:id="@+id/next"
+
+        android:drawableRight="@mipmap/arrow_right"
+        android:drawablePadding="5dp"
+
         android:layout_gravity="center_horizontal" />
+
+    <ImageButton
+        android:layout_width="97dp"
+        android:layout_height="47dp"
+        android:id="@+id/imageButton"
+        android:src="@mipmap/arrow_left"
+        android:layout_gravity="center_horizontal"/>
 </LinearLayout>
