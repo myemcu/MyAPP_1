@@ -52,15 +52,15 @@ public class MainActivity extends AppCompatActivity {   // AppCompatActivity为�
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
+
+
+
         //-显示初始界面，并用Java实现首行TextView文本显示----------------------
         //-显示的内容为类数组中的第一个String-----------------------------------
 
-        //取得数组ID资源
-        question=mQuestionBank[mCurrentIndex].getTextResId();   // 使用获取
-
-        //获取文本对象，设置需要输出的问题
         mQuestionTextView=(TextView) findViewById(R.id.question_text_view);
-        mQuestionTextView.setText(question);
+
+        updateQuestion();
 
         //-增加Button事件处理-----------------------------------------------
         findViews();
@@ -84,11 +84,16 @@ public class MainActivity extends AppCompatActivity {   // AppCompatActivity为�
             public void onClick(View v) {
                 //toast.makeText(MainActivity.this, R.string.bNext, Toast.LENGTH_SHORT).show();
                 mCurrentIndex = (mCurrentIndex+1) % mQuestionBank.length;//在length范围内递增索引
-                int question = mQuestionBank[mCurrentIndex].getTextResId();
-                mQuestionTextView.setText(question);
+
+                updateQuestion();
             }
         });
 
+    }
+
+    private void updateQuestion() {
+        question=mQuestionBank[mCurrentIndex].getTextResId();   //取得数组ID资源
+        mQuestionTextView.setText(question);                    //显示数组内容
     }
 
     private void findViews() {
