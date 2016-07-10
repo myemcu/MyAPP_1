@@ -52,14 +52,10 @@ public class MainActivity extends AppCompatActivity {   // AppCompatActivity为�
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-
-
-
         //-显示初始界面，并用Java实现首行TextView文本显示----------------------
         //-显示的内容为类数组中的第一个String-----------------------------------
 
         mQuestionTextView=(TextView) findViewById(R.id.question_text_view);
-
         updateQuestion();
 
         //-增加Button事件处理-----------------------------------------------
@@ -68,14 +64,16 @@ public class MainActivity extends AppCompatActivity {   // AppCompatActivity为�
         mTrueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                toast.makeText(MainActivity.this,R.string.correct,Toast.LENGTH_SHORT).show();
+                //toast.makeText(MainActivity.this,R.string.correct,Toast.LENGTH_SHORT).show();
+                checkAnswer(true);
             }
         });
 
         mFalseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                toast.makeText(MainActivity.this, R.string.incorrect, Toast.LENGTH_SHORT).show();
+                //toast.makeText(MainActivity.this, R.string.incorrect, Toast.LENGTH_SHORT).show();
+                checkAnswer(false);
             }
         });
 
@@ -84,11 +82,25 @@ public class MainActivity extends AppCompatActivity {   // AppCompatActivity为�
             public void onClick(View v) {
                 //toast.makeText(MainActivity.this, R.string.bNext, Toast.LENGTH_SHORT).show();
                 mCurrentIndex = (mCurrentIndex+1) % mQuestionBank.length;//在length范围内递增索引
-
                 updateQuestion();
             }
         });
 
+    }
+
+    private void checkAnswer(boolean userPressedTrue) {
+        boolean answerIsTrue = mQuestionBank[mCurrentIndex].isAnswerTrue();
+
+        int mssageResId=0;
+
+        if(userPressedTrue == answerIsTrue) {
+            mssageResId = R.string.correct;
+        }
+        else {
+            mssageResId = R.string.incorrect;
+        }
+
+        toast.makeText(this, mssageResId, Toast.LENGTH_SHORT).show();
     }
 
     private void updateQuestion() {
