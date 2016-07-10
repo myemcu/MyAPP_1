@@ -82,7 +82,10 @@ public class MainActivity extends AppCompatActivity {   // AppCompatActivity为�
         mNextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                toast.makeText(MainActivity.this, R.string.bNext, Toast.LENGTH_SHORT).show();
+                //toast.makeText(MainActivity.this, R.string.bNext, Toast.LENGTH_SHORT).show();
+                mCurrentIndex = (mCurrentIndex+1) % mQuestionBank.length;//在length范围内递增索引
+                int question = mQuestionBank[mCurrentIndex].getTextResId();
+                mQuestionTextView.setText(question);
             }
         });
 
