@@ -3,7 +3,7 @@
     <string name="show">判断题测试。</string>
     <string name="btn1">正确</string>
     <string name="btn2">错误</string>
-    <string name="correct">正确，再来一次</string>
+    <string name="correct">判断正确，再来一次</string>
     <string name="incorrect">不对，罚款500</string>
 
     <string name="bNext">下一个</string>

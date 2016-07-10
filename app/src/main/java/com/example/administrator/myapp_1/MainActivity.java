@@ -26,14 +26,16 @@ public class MainActivity extends AppCompatActivity {   // AppCompatActivity为�
     private Toast toast;
 
     //定义控件变量
-    private Button   mTrueButton;   // 正确键
-    private Button   mFalseButton;  // 错误键
-    private Button   mNextButton;   // 下翻建
-
+    private Button   mTrueButton;       // 正确键
+    private Button   mFalseButton;      // 错误键
+    private Button   mNextButton;       // 下翻建
     private TextView mQuestionTextView; // 文本
 
     // 定义普通变量
     private int      question;
+
+    //问题数组索引
+    private int mCurrentIndex=0;
 
     //定义问题数组(类数组)
     private Question[] mQuestionBank = new Question[] {
@@ -44,22 +46,13 @@ public class MainActivity extends AppCompatActivity {   // AppCompatActivity为�
             new Question(R.string.question_5,true)
     };
 
-    //问题数组索引
-    private int mCurrentIndex=0;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-        //-显示初始界面，并用Java实现首行TextView文本显示----------------------
-        //-显示的内容为类数组中的第一个String-----------------------------------
-
-        mQuestionTextView=(TextView) findViewById(R.id.question_text_view);
-        updateQuestion();
-
-        //-增加Button事件处理-----------------------------------------------
-        findViews();
+        findViews();        // 获取所有控件对象
+        updateQuestion();   // 显示问题
 
         mTrueButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,12 +75,28 @@ public class MainActivity extends AppCompatActivity {   // AppCompatActivity为�
             public void onClick(View v) {
                 //toast.makeText(MainActivity.this, R.string.bNext, Toast.LENGTH_SHORT).show();
                 mCurrentIndex = (mCurrentIndex+1) % mQuestionBank.length;//在length范围内递增索引
-                updateQuestion();
+                updateQuestion(); //显示问题
             }
         });
 
     }
+    
+    // 获取控件对象方法
+    private void findViews() {
+        mQuestionTextView =(TextView) findViewById(R.id.question_text_view);
+        //获取那三个Button对象
+        mTrueButton  = (Button) findViewById(R.id.btn1);
+        mFalseButton = (Button) findViewById(R.id.btn2);
+        mNextButton  = (Button) findViewById(R.id.next);
+    }
 
+    // 更新显示题目方法
+    private void updateQuestion() {
+        question=mQuestionBank[mCurrentIndex].getTextResId();   //取得数组ID资源
+        mQuestionTextView.setText(question);                    //显示数组内容
+    }
+
+    //　判断答案方法
     private void checkAnswer(boolean userPressedTrue) {
         boolean answerIsTrue = mQuestionBank[mCurrentIndex].isAnswerTrue();
 
@@ -101,17 +110,5 @@ public class MainActivity extends AppCompatActivity {   // AppCompatActivity为�
         }
 
         toast.makeText(this, mssageResId, Toast.LENGTH_SHORT).show();
-    }
-
-    private void updateQuestion() {
-        question=mQuestionBank[mCurrentIndex].getTextResId();   //取得数组ID资源
-        mQuestionTextView.setText(question);                    //显示数组内容
-    }
-
-    private void findViews() {
-        //获取那三个Button对象
-        mTrueButton  = (Button) findViewById(R.id.btn1);
-        mFalseButton = (Button) findViewById(R.id.btn2);
-        mNextButton  = (Button) findViewById(R.id.next);
     }
 }
