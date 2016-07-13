@@ -10,6 +10,8 @@
 * 在连接真机的情况下，点击"运行"，若手机无法加载则需要断开重连。
 * */
 
+// @Override的作用是检查覆盖方法中的语法错误
+
 package com.example.administrator.myapp_1;
 
 import android.support.v7.app.AppCompatActivity;
@@ -24,7 +26,9 @@ import android.widget.Toast;
 //              子类
 public class MainActivity extends AppCompatActivity {   // AppCompatActivity为旧版本提供兼容性支持
 
+    //定义Logcat的信息过滤标识为MyAPP_1
     private static final String TAG="MyAPP_1";  // 定义TAG为私有，静态，常亮为工程名"MyAPP_1"
+    private static final String KEY_INDEX="index";
 
     //定义消息提示变量
     private Toast toast;
@@ -56,11 +60,13 @@ public class MainActivity extends AppCompatActivity {   // AppCompatActivity为�
         super.onCreate(savedInstanceState);
 
         //为上面的onCreate添加日志输出代码
-        Toast.makeText(this, R.string.onCreate,Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, R.string.onCreate,Toast.LENGTH_SHORT).show();
+        Log.d(TAG,"onCreate(Bundle) called");
+
         setContentView(R.layout.main);
 
         findViews();        // 获取所有控件对象
-        updateQuestion();   // 显示问题
+        //updateQuestion();   // 显示问题
 
         mTrueButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,6 +103,12 @@ public class MainActivity extends AppCompatActivity {   // AppCompatActivity为�
             }
         });
 
+        //-确认是否成功获取旋屏状态---------------------------------------------------------------
+        if (savedInstanceState != null) {
+            mCurrentIndex=savedInstanceState.getInt(KEY_INDEX, 0);
+        }
+
+        updateQuestion();   // 显示问题(必须在上面的那个if()的下方才有效)
     }
     
     // 获取控件对象方法
@@ -134,36 +146,51 @@ public class MainActivity extends AppCompatActivity {   // AppCompatActivity为�
     @Override
     protected void onStop() {
         super.onStop();
-        Toast.makeText(this, R.string.onStop,Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, R.string.onStop,Toast.LENGTH_SHORT).show();
+        Log.d(TAG,"onStop() called");
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        Toast.makeText(this, R.string.onDestroy,Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, R.string.onDestroy,Toast.LENGTH_SHORT).show();
+        Log.d(TAG,"onDestroy() called");
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        Toast.makeText(this, R.string.onPause,Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, R.string.onPause,Toast.LENGTH_SHORT).show();
+        Log.d(TAG,"onPause() called");
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        Toast.makeText(this, R.string.onStart,Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, R.string.onStart,Toast.LENGTH_SHORT).show();
+        Log.d(TAG,"onStart() called");
     }
 
     @Override
     protected void onRestart() {
         super.onRestart();
-        Toast.makeText(this, R.string.onRestart,Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, R.string.onRestart,Toast.LENGTH_SHORT).show();
+        Log.d(TAG,"onRestart() called");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        Toast.makeText(this, R.string.onResume,Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, R.string.onResume,Toast.LENGTH_SHORT).show();
+        Log.d(TAG,"onResume() called");
+    }
+
+    //-设备旋屏状态保存----------------------------------------------------------
+
+    @Override
+    protected void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        Log.i(TAG,"onSaveInstanceState");
+        savedInstanceState.putInt(KEY_INDEX,mCurrentIndex);
     }
 }
