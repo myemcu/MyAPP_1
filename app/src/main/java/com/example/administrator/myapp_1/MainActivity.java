@@ -14,6 +14,7 @@ package com.example.administrator.myapp_1;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -22,6 +23,8 @@ import android.widget.Toast;
 
 //              子类
 public class MainActivity extends AppCompatActivity {   // AppCompatActivity为旧版本提供兼容性支持
+
+    private static final String TAG="MyAPP_1";  // 定义TAG为私有，静态，常亮为工程名"MyAPP_1"
 
     //定义消息提示变量
     private Toast toast;
@@ -51,6 +54,9 @@ public class MainActivity extends AppCompatActivity {   // AppCompatActivity为�
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //为上面的onCreate添加日志输出代码
+        Toast.makeText(this, R.string.onCreate,Toast.LENGTH_SHORT).show();
         setContentView(R.layout.main);
 
         findViews();        // 获取所有控件对象
@@ -123,5 +129,41 @@ public class MainActivity extends AppCompatActivity {   // AppCompatActivity为�
         }
 
         toast.makeText(this, mssageResId, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Toast.makeText(this, R.string.onStop,Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Toast.makeText(this, R.string.onDestroy,Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Toast.makeText(this, R.string.onPause,Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Toast.makeText(this, R.string.onStart,Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Toast.makeText(this, R.string.onRestart,Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Toast.makeText(this, R.string.onResume,Toast.LENGTH_SHORT).show();
     }
 }

@@ -15,4 +15,14 @@
     <string name = "question_3">老子西出函谷关。</string>
     <string name = "question_4">老子穿越回现代。</string>
     <string name = "question_5">老子来过地球。</string>
+
+    <!--Activity运行时的各状态切换-->
+    <string name="onCreate">创建</string>
+    <string name="onStop">停止</string>
+    <string name="onDestroy">销毁</string>
+    <string name="onPause">暂停</string>
+    <string name="onStart">启动</string>
+    <string name="onRestart">重启</string>
+    <string name="onResume">恢复</string>
+
 </resources>
