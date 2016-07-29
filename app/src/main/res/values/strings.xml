@@ -10,11 +10,11 @@
 
     <!--以下为题目描述-->
 
-    <string name = "question_1">老子写过《道德经》。</string>
-    <string name = "question_2">老子是外国人。</string>
-    <string name = "question_3">老子西出函谷关。</string>
-    <string name = "question_4">老子穿越回现代。</string>
-    <string name = "question_5">老子来过地球。</string>
+    <string name="question_1">老子写过《道德经》。</string>
+    <string name="question_2">老子是外国人。</string>
+    <string name="question_3">老子西出函谷关。</string>
+    <string name="question_4">老子穿越回现代。</string>
+    <string name="question_5">老子来过地球。</string>
 
     <!--Activity运行时的各状态切换-->
     <string name="onCreate">创建</string>

@@ -40,22 +40,37 @@
             android:id="@+id/btn2" />
     </LinearLayout>
 
-    <Button
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/bNext"
-        android:textSize="8pt"
-        android:id="@+id/next"
+        android:orientation="horizontal">
 
-        android:drawableRight="@mipmap/arrow_right"
-        android:drawablePadding="5dp"
+        <ImageButton
+            android:layout_width="97dp"
+            android:layout_height="47dp"
+            android:id="@+id/imageButton"
+            android:src="@mipmap/arrow_left"
+            android:layout_weight="1"
+            android:layout_gravity="center_horizontal"/>
 
-        android:layout_gravity="center_horizontal" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="作弊"
+            android:id="@+id/cheat"
+            android:layout_weight="1"
+            android:textSize="8pt"/>
 
-    <ImageButton
-        android:layout_width="97dp"
-        android:layout_height="47dp"
-        android:id="@+id/imageButton"
-        android:src="@mipmap/arrow_left"
-        android:layout_gravity="center_horizontal"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bNext"
+            android:textSize="8pt"
+            android:id="@+id/next"
+            android:drawableRight="@mipmap/arrow_right"
+            android:drawablePadding="5dp"
+            android:layout_weight="1"
+            android:layout_gravity="center_horizontal" />
+    </LinearLayout>
+
 </LinearLayout>

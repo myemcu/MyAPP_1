@@ -14,6 +14,7 @@
 
 package com.example.administrator.myapp_1;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -27,8 +28,9 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {   // AppCompatActivity为旧版本提供兼容性支持
 
     //定义Logcat的信息过滤标识为MyAPP_1
-    private static final String TAG="MyAPP_1";  // 定义TAG为私有，静态，常亮为工程名"MyAPP_1"
+    private static final String TAG="MyAPP_1";  // 定义TAG为私有，静态，常量为工程名"MyAPP_1"
     private static final String KEY_INDEX="index";
+
 
     //定义消息提示变量
     private Toast toast;
@@ -39,6 +41,8 @@ public class MainActivity extends AppCompatActivity {   // AppCompatActivity为�
     private Button      mNextButton;        // 下翻建
     private ImageButton mPrewButton;        // 上翻键
     private TextView    mQuestionTextView;  // 文本
+
+    private Button cheatbutton;             // 作弊键
 
     // 定义普通变量
     private int      question;
@@ -103,6 +107,17 @@ public class MainActivity extends AppCompatActivity {   // AppCompatActivity为�
             }
         });
 
+
+        cheatbutton = (Button) findViewById(R.id.cheat);
+        cheatbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //启动CheatActivity
+                Intent intent = new Intent(MainActivity.this,CheatActivity.class);
+                startActivity(intent);
+            }
+        });
+
         //-确认是否成功获取旋屏状态---------------------------------------------------------------
         if (savedInstanceState != null) {
             mCurrentIndex=savedInstanceState.getInt(KEY_INDEX, 0);
@@ -123,6 +138,9 @@ public class MainActivity extends AppCompatActivity {   // AppCompatActivity为�
 
     // 更新显示题目方法
     private void updateQuestion() {
+
+        //Log.d(TAG, "qusetion"+mCurrentIndex, new Exception());
+
         question=mQuestionBank[mCurrentIndex].getTextResId();   //取得数组ID资源
         mQuestionTextView.setText(question);                    //显示数组内容
     }
